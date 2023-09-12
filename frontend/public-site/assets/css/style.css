@@ -418,7 +418,9 @@ h6 {
 }
 
 #hero .logo {
-  color: #006b77;
+  color: rgb(255, 255, 255);
+  border-radius: 3px;
+  background-color: #006b77;
 }
 
 @media (max-width: 768px) {
