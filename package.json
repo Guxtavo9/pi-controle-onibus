@@ -1,0 +1,14 @@
+{
+  "name": "pi-controle-onibus",
+  "version": "1.0.0",
+  "description": "* **Equipe:** \r   * Gustavo Pereira Lima mailto:pereira.gustavo2@aluno.ifsp.edu.br\r   * João Vitor Tavares de Matos mailto:Joaovitortavares520@gmail.com\r   * Barbara dos Santos Pereira mailto:bp280068@gmail.com",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
