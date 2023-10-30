@@ -9,22 +9,45 @@ router.get("/", function (req, res, next) {
 
 // rota PASSSAGEIRO
 
-router.get("/listar", function (req, res, next) {
-  res.render("linhas/listar");
+router.get("/passageiro", function (req, res, next) {
+  res.render("passageiro/listar");
+});
+
+// exibe unicamente um passageiro
+router.get("/passageiro/exibir/:id", function (req, res, next) {
+  res.render("passageiro/exibir");
+});
+
+router.get("passageiro/cadastrar", function (req, res, next) {
+  res.render("paasageiro/cadastrar");
 });
 
 // rota MOTORISTA
 
 router.get("/motorista", function (req, res, next) {
-  res.render("motoristas/motoristaListar");
+  res.render("motorista/listar");
 });
 
 
+// exibe unicamente um motorista
+router.get("/motorista/exibir/:id", function (req, res, next) {
+  res.render("motorista/exibir");
+});
+
+
+router.get("/motorista/cadastrar", function (req, res, next) {
+  res.render("motorista/cadastrar");
+});
+
 // rota LINHA
-router.get("/listar", function (req, res, next) {
+router.get("/linha", function (req, res, next) {
   res.render("linhas/listar");
 });
 
+// exibe unicamente uma linha
+router.get("/linha/exibir/:id", function (req, res, next) {
+  res.render("linha/exibir");
+});
 
 
 router.get("/cadastrar", function (req, res, next) {
