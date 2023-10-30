@@ -22,6 +22,18 @@ router.get("passageiro/cadastrar", function (req, res, next) {
   res.render("paasageiro/cadastrar");
 });
 
+router.get("passageiro/cadastrar", function (req, res, next) {
+  res.render("passageiro/cadastrar");
+});
+
+router.get("passageiro/editar/:id", function (req, res, next) {
+  res.render("passageiro/editar");
+});
+
+router.get("passageiro/excluir/:id", function (req, res, next) {
+  res.render("passsageiro/excluir");
+});
+
 // rota MOTORISTA
 
 router.get("/motorista", function (req, res, next) {
@@ -39,9 +51,23 @@ router.get("/motorista/cadastrar", function (req, res, next) {
   res.render("motorista/cadastrar");
 });
 
+
+router.get("motorista/cadastrar", function (req, res, next) {
+  res.render("motorista/cadastrar");
+});
+
+router.get("motorista/editar/:id", function (req, res, next) {
+  res.render("motorista/editar");
+});
+
+router.get("motorista/excluir/:id", function (req, res, next) {
+  res.render("motorista/excluir");
+});
+
+
 // rota LINHA
-router.get("/linha", function (req, res, next) {
-  res.render("linhas/listar");
+router.get("linha/linha", function (req, res, next) {
+  res.render("linha/listar");
 });
 
 // exibe unicamente uma linha
@@ -50,17 +76,21 @@ router.get("/linha/exibir/:id", function (req, res, next) {
 });
 
 
-router.get("/cadastrar", function (req, res, next) {
-  res.render("linhas/cadastrar");
+router.get("linha/cadastrar", function (req, res, next) {
+  res.render("linha/cadastrar");
 });
 
-router.get("/exibir/:id", function (req, res, next) {
-  res.render("linhas/exibir");
+router.get("linha/editar/:id", function (req, res, next) {
+  res.render("linha/editar");
 });
 
-router.get("/editar/:id", function (req, res, next) {
-  res.render("linhas/editar");
+router.get("linha/excluir/:id", function (req, res, next) {
+  res.render("linha/excluir");
 });
+
+
+
+
 
 router.get("/excluir/:id", function (req, res, next) {
   res.render("linhas/excluir");
