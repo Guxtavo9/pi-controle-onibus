@@ -46,12 +46,6 @@ router.get("/motorista/exibir/:id", function (req, res, next) {
   res.render("motorista/exibir");
 });
 
-
-router.get("/motorista/cadastrar", function (req, res, next) {
-  res.render("motorista/cadastrar");
-});
-
-
 router.get("/motorista/cadastrar", function (req, res, next) {
   res.render("motorista/cadastrar");
 });
