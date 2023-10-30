@@ -88,16 +88,8 @@ router.get("linha/excluir/:id", function (req, res, next) {
   res.render("linha/excluir");
 });
 
-
-
-
-
-router.get("/excluir/:id", function (req, res, next) {
-  res.render("linhas/excluir");
-});
-
-router.get("/qtd-horarios-por-linha", function (req, res, next) {
-  res.render("linhas/qtdHorariosPorLinha");
+router.get("linha/qtd-horarios-por-linha", function (req, res, next) {
+  res.render("linha/qtdHorariosPorLinha");
 });
 
 module.exports = router;
