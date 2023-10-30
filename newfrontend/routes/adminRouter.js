@@ -18,19 +18,19 @@ router.get("/passageiro/exibir/:id", function (req, res, next) {
   res.render("passageiro/exibir");
 });
 
-router.get("passageiro/cadastrar", function (req, res, next) {
+router.get("/passageiro/cadastrar", function (req, res, next) {
   res.render("paasageiro/cadastrar");
 });
 
-router.get("passageiro/cadastrar", function (req, res, next) {
+router.get("/passageiro/cadastrar", function (req, res, next) {
   res.render("passageiro/cadastrar");
 });
 
-router.get("passageiro/editar/:id", function (req, res, next) {
+router.get("/passageiro/editar/:id", function (req, res, next) {
   res.render("passageiro/editar");
 });
 
-router.get("passageiro/excluir/:id", function (req, res, next) {
+router.get("/passageiro/excluir/:id", function (req, res, next) {
   res.render("passageiro/excluir");
 });
 
