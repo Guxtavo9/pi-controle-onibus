@@ -31,7 +31,7 @@ router.get("passageiro/editar/:id", function (req, res, next) {
 });
 
 router.get("passageiro/excluir/:id", function (req, res, next) {
-  res.render("passsageiro/excluir");
+  res.render("passageiro/excluir");
 });
 
 // rota MOTORISTA
@@ -52,21 +52,21 @@ router.get("/motorista/cadastrar", function (req, res, next) {
 });
 
 
-router.get("motorista/cadastrar", function (req, res, next) {
+router.get("/motorista/cadastrar", function (req, res, next) {
   res.render("motorista/cadastrar");
 });
 
-router.get("motorista/editar/:id", function (req, res, next) {
+router.get("/motorista/editar/:id", function (req, res, next) {
   res.render("motorista/editar");
 });
 
-router.get("motorista/excluir/:id", function (req, res, next) {
+router.get("/motorista/excluir/:id", function (req, res, next) {
   res.render("motorista/excluir");
 });
 
 
 // rota LINHA
-router.get("linha/linha", function (req, res, next) {
+router.get("/linha/linha", function (req, res, next) {
   res.render("linha/listar");
 });
 
@@ -76,19 +76,19 @@ router.get("/linha/exibir/:id", function (req, res, next) {
 });
 
 
-router.get("linha/cadastrar", function (req, res, next) {
+router.get("/linha/cadastrar", function (req, res, next) {
   res.render("linha/cadastrar");
 });
 
-router.get("linha/editar/:id", function (req, res, next) {
+router.get("/linha/editar/:id", function (req, res, next) {
   res.render("linha/editar");
 });
 
-router.get("linha/excluir/:id", function (req, res, next) {
+router.get("/linha/excluir/:id", function (req, res, next) {
   res.render("linha/excluir");
 });
 
-router.get("linha/qtd-horarios-por-linha", function (req, res, next) {
+router.get("/linha/qtd-horarios-por-linha", function (req, res, next) {
   res.render("linha/qtdHorariosPorLinha");
 });
 
