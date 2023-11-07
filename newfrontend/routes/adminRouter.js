@@ -15,75 +15,71 @@ router.get("/passageiro", function (req, res, next) {
 
 // exibe unicamente um passageiro
 router.get("/passageiro/exibir/:id", function (req, res, next) {
-  res.render("passageiro/exibir");
+  res.render("admin/passageiro/exibir");
 });
 
 router.get("/passageiro/cadastrar", function (req, res, next) {
-  res.render("paasageiro/cadastrar");
-});
-
-router.get("/passageiro/cadastrar", function (req, res, next) {
-  res.render("passageiro/cadastrar");
+  res.render("admin/passageiro/cadastrar");
 });
 
 router.get("/passageiro/editar/:id", function (req, res, next) {
-  res.render("passageiro/editar");
+  res.render("admin/passageiro/editar");
 });
 
 router.get("/passageiro/excluir/:id", function (req, res, next) {
-  res.render("passageiro/excluir");
+  res.render("admin/passageiro/excluir");
 });
 
 // rota MOTORISTA
 
 router.get("/motorista", function (req, res, next) {
-  res.render("motorista/listar");
+  res.render("admin/motorista/listar");
 });
 
 
 // exibe unicamente um motorista
 router.get("/motorista/exibir/:id", function (req, res, next) {
-  res.render("motorista/exibir");
+  res.render("admin/motorista/exibir");
 });
 
 router.get("/motorista/cadastrar", function (req, res, next) {
-  res.render("motorista/cadastrar");
+  res.render("admin/motorista/cadastrar");
 });
 
 router.get("/motorista/editar/:id", function (req, res, next) {
-  res.render("motorista/editar");
+  res.render("admin/motorista/editar");
 });
 
 router.get("/motorista/excluir/:id", function (req, res, next) {
-  res.render("motorista/excluir");
+  res.render("admin/motorista/excluir");
 });
 
 
 // rota LINHA
 router.get("/linha/linha", function (req, res, next) {
-  res.render("linha/listar");
+  res.render("admin/linha/listar");
 });
 
 // exibe unicamente uma linha
 router.get("/linha/exibir/:id", function (req, res, next) {
-  res.render("linha/exibir");
+  res.render("admin/linha/exibir");
 });
 
 
 router.get("/linha/cadastrar", function (req, res, next) {
-  res.render("linha/cadastrar");
+  res.render("admin/linha/cadastrar");
 });
 
 router.get("/linha/editar/:id", function (req, res, next) {
-  res.render("linha/editar");
+  res.render("admin/linha/editar");
 });
 
 router.get("/linha/excluir/:id", function (req, res, next) {
-  res.render("linha/excluir");
+  res.render("admin/linha/excluir");
 });
 
 router.get("/linha/qtd-horarios-por-linha", function (req, res, next) {
-  res.render("linha/qtdHorariosPorLinha");
+  res.render("admin/linha/qtdHorariosPorLinha");
 });
 
 module.exports = router;
