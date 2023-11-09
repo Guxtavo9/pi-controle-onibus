@@ -44,7 +44,10 @@
 <body>
   
   <%- include('../partials/_header.ejs'); -%>
-  <%- include('../partials/_aside.ejs'); -%>  
+  <%- include('../partials/_aside.ejs'); -%>
+
+  <!-- ======= Sidebar ======= -->
+ 
 
   <main id="main" class="main">
 
@@ -79,7 +82,7 @@
                 </div>
                 
                 <div class="col-md-6">
-                  <label for="validationCustom01" class="form-label">CPF</label>
+                  <label for="validationCustom01" class="form-label">CNH</label>
                   <input type="text" pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$" autocomplete="off" required=""
                     placeholder="Informe seu CPF" class="form-control" inlength="11">
                   <div class="valid-feedback">
