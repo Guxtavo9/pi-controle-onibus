@@ -855,8 +855,170 @@ section {
 }
 
 /*--------------------------------------------------------------
+# card animado
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+.card-bord {
+    background: linear-gradient(180deg, rgba(0,44,255,1) 0%, rgba(0,44,255,1) 50%, rgba(255, 255, 255, 1) 50%,   rgba(255,255,255,1) 100%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.card-animado {
+    width: 300px;
+    height: 300px;
+    background: white;
+    display: flex;
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.5);
+    transition: width 500ms ease;
+    border-radius: .5em;
+}
+.card-animado:hover {    
+    width: 600px;
+}
+.card-animado .image::after { /* Animação entra aqui */
+    opacity: 1;
+}
+.card-animado:hover .desc {
+    display: block;    
+    transform: translate(300px);    
+    border-radius: 0 .5em .5em 0;
+}
+.card-animado .image {
+    position: relative;
+    min-width: 300px;
+    height: 300px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border-radius: .5em;
+}
+.card-animado .image::after {
+    content: '';
+    position: absolute;
+    border: 5px solid white;
+    border-bottom-left-radius: 100%;
+    transform: rotate(45deg);
+    margin-left: 300px;
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
+.card-animado .image img {
+    width: 280px;
+    height: auto;
+}
+.card-animado .desc {
+    position: absolute;
+    min-width: 300px;
+    min-height: 300px;
+    padding: 10px;
+    background: #252525;
+    overflow: hidden;
+    z-index: 0;
+    transform: translate(0px);
+    transition: transform 500ms ease;
+    border-radius: .5em;
+}
+.card-animado .desc .title h2 {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+.card-animado .desc .descProd ul {
+    text-indent: 10px;
+}
+.card-animado .desc .descProd ul li {
+    list-style: none;
+    font-size: 15px;
+    line-height: 19px;
+    color: white;
+    opacity: 0.9;
+    margin-left: 8px;
+}
+.card-animado .desc .price-buy {
+    display: flex;
+    justify-content: space-around;
+}
+.card-animado .desc .price-buy .price {
+    font-weight: 600;
+}
+.card-animado .desc .price-buy .price p {
+    font-size: 21px;
+    color: white;
+    
+}
+.card-animado .desc .price-buy .price p sup {
+    font-size: 16px;
+    color: white;
+    opacity: 0.9;
+    
+}
+.card-animado .desc .price-buy button {
+    width: 75px;
+    height: 33px;
+    border-radius: .6em;
+    border: 1px solid rgba(0,44,255,.8);
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding-top: 1px;
+    padding-left: 3px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+.card-animado .desc .price-buy button:hover {
+    background: rgba(0,44,255,1);
+    color: white;
+    border-color: rgba(255,255,255,.5);
+}
+.line {
+    width: 75%;
+    height: 1px;
+    background-color: rgba(233, 233, 233, 0.8);
+    margin: 15px auto;
+}
+
+@media (max-width: 747px) {
+    .card-animado {
+        transition: height 500ms ease;
+    }
+    .card-animado .image::after {
+        transform: rotate(135deg);
+        margin-top: 300px;
+        margin-left: 0;
+    }
+    .card-animado .desc {
+        transform: translateY(0px);
+        transition: transform 500ms ease;
+    }
+    .card-animado:hover {    
+        width: 300px;
+        height: 600px;
+    }
+    .card-animado:hover .desc {
+        transform: translate(0px);
+        transform: translateY(300px); 
+        border-radius: 0 0 .5em .5em;
+    }
+}
+
+/*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
