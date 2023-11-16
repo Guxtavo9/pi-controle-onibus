@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRouter);
-// app.use('/public-site', publicRouter);
+app.use('/public-site', publicRouter);
 // app.use('/catraca', catracaRouter);
 
 // catch 404 and forward to error handler
