@@ -52,7 +52,7 @@ router.get("/passageiro/buscar/:nome", async function (req, res, next) {
 
 router.post("/passageiro/cadastrar", async (req, res, next) => {
   try {
-    const { nome, saldo, cpf, carterinha, email, telefone, usuario } = req.body;
+    const { nome, saldo, cpf, carterinha, email, telefone, usuario_id } = req.body;
 
     const passageiro = await prisma.passageiro.create({
       data: {
@@ -62,7 +62,7 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
         carterinha,
         email,
         telefone,
-        // usuario,
+        usuario_id,
       },
     });
 
@@ -76,7 +76,7 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
 router.put("/passageiro/editar/:id", async function (req, res, next) {
   try {
     const passageiroId = parseInt(req.params.id);
-    const { nome, saldo, cpf, carterinha, email, telefone, usuario } = req.body;
+    const { nome, saldo, cpf, carterinha, email, telefone, usuario_id } = req.body;
 
     const passageiro = await prisma.passageiro.update({
       where: {
@@ -89,7 +89,7 @@ router.put("/passageiro/editar/:id", async function (req, res, next) {
         carterinha,
         email,
         telefone,
-        usuario,
+        usuario_id,
       },
     });
 
