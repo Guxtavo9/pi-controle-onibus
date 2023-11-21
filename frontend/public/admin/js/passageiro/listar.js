@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const form = document.querySelector("#passaeiro");
   try {
     const tableBody = document.querySelector("#passageiro tbody");
-    const response = await axios.get("http://localhost:3000/admin/passageiro/listar");
+    const response = await axios.get("http://localhost:3001/admin/passageiro/");
 
     response.data.forEach((passageiro) => {
       const row = tableBody.insertRow(-1);
@@ -20,21 +20,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       showLink.innerHTML = "Exibir";
       showLink.classList.add("btn", "btn-info", "btn-sm", "mx-1");
       showLink.href = `http://localhost:3001/passageiros/exibir/${passageiro.id}`;
-      row.insertCell(6).appendChild(showLink);
+      row.insertCell(7).appendChild(showLink);
 
       // Link para Editar
       const editLink = document.createElement("a");
       editLink.innerHTML = "Editar";
       editLink.classList.add("btn", "btn-success", "btn-sm", "mx-1");
       editLink.href = `http://localhost:3001/passageiros/editar/${passageiro.id}`;
-      row.insertCell(7).appendChild(editLink);
+      row.insertCell(8).appendChild(editLink);
 
       // Link para Deletar
       const deleteLink = document.createElement("a");
       deleteLink.innerHTML = "Deletar";
       deleteLink.classList.add("btn", "btn-danger", "btn-sm", "mx-1");
       deleteLink.href = `http://localhost:3001/passageiros/excluir/${passageiro.id}`;
-      row.insertCell(8).appendChild(deleteLink);
+      row.insertCell(9).appendChild(deleteLink);
     });
   } catch {
 
