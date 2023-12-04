@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
 // rota PASSSAGEIRO
 
 router.get("/passageiro", function (req, res, next) {
-  res.render("passageiro/listar");
+  res.render("admin/passageiro/listar");
 });
 
 // exibe unicamente um passageiro

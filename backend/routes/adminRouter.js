@@ -6,11 +6,9 @@ const prisma = new PrismaClient();
 
 // Passageiro
 
-linha
-
 router.get("passageiro/listar", async function (req, res, next) {
   const passageiro = await prisma.passageiro.findMany();
-  res.json(passageiro);
+  res.status(200).json(passageiro);
 });
 
 router.get("/passageiro/buscar/:id", async function (req, res, next) {
@@ -28,23 +26,21 @@ router.get("/passageiro/buscar/:id", async function (req, res, next) {
     }
 
     res.status(200).json(passageiro);
-    
   } catch (error) {
     console.error("Erro ao buscar Passageiro por ID:", error);
     res.status(500).json({ error: "Erro interno do servidor" });
   }
 });
 
-
 router.get("/passageiro/buscar/:nome", async function (req, res, next) {
-  const passageiroNome = (req.params.nome);
+  const passageiroNome = req.params.nome;
 
   try {
     const passageiros = await prisma.passageiro.findUnique({
       where: {
         nome: {
-          contains: passageiroNome
-        }
+          contains: passageiroNome,
+        },
       },
     });
     res.status(200).json(passageiros);
@@ -56,7 +52,7 @@ router.get("/passageiro/buscar/:nome", async function (req, res, next) {
 
 router.post("/passageiro/cadastrar", async (req, res, next) => {
   try {
-    const { nome, saldo, cpf, carterinha, email, telefone, usuario} = req.body;
+    const { nome, saldo, cpf, carterinha, email, telefone, usuario_id } = req.body;
 
     const passageiro = await prisma.passageiro.create({
       data: {
@@ -66,7 +62,7 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
         carterinha,
         email,
         telefone,
-        usuario
+        usuario_id,
       },
     });
 
@@ -80,11 +76,11 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
 router.put("/passageiro/editar/:id", async function (req, res, next) {
   try {
     const passageiroId = parseInt(req.params.id);
-    const { nome, saldo, cpf, carterinha, email, telefone, usuario} = req.body;
+    const { nome, saldo, cpf, carterinha, email, telefone, usuario_id} = req.body;
 
     const passageiro = await prisma.passageiro.update({
       where: {
-        id: parseInt(passageiroId)
+        id: parseInt(passageiroId),
       },
       data: {
         nome,
@@ -93,7 +89,7 @@ router.put("/passageiro/editar/:id", async function (req, res, next) {
         carterinha,
         email,
         telefone,
-        usuario
+        usuario_id,
       },
     });
 
@@ -119,7 +115,7 @@ router.delete("/excluir/:id", async function (req, res, next) {
       res.status(404).json({ error: "Passageiro não encontrada." });
     }
 
-    res.status(200).json( { msg: 'cpf cancelado!' });
+    res.status(200).json({ msg: "cpf cancelado!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao excluir o Passageiro." });

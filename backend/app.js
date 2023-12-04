@@ -5,8 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const adminRouter = require('./routes/adminRouter');
-const publicRouter = require('./routes/publicRouter');
-const catracaRouter = require('./routes/catracaRouter');
+// const publicRouter = require('./routes/publicRouter');
+// const catracaRouter = require('./routes/catracaRouter');
 
 const app = express();
 
@@ -18,8 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRouter);
-app.use('/public', publicRouter);
-app.use('/catraca', catracaRouter);
-
+// app.use('/public-site', publicRouter);
+// app.use('/catraca', catracaRouter);
 
 module.exports = app;
