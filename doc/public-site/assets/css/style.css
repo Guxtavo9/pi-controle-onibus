@@ -500,7 +500,7 @@ section {
 
 .section-bg:before {
   content: "";
-  background: #030226;
+  background: #f7f7f7;
   position: absolute;
   bottom: 60px;
   top: 60px;

@@ -16,9 +16,8 @@ model passageiro {
   carterinha String     @db.Char(20)
   email      String     @db.VarChar(500)
   telefone   String     @db.Char(11)
-  foto       String    @db.VarChar(250)
-  usuario    usuario    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_usuario1")
   embarque   embarque[]
+  usuario    usuario    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_usuario1")
 
   @@index([usuario_id], map: "fk_passageiro_usuario1_idx")
 }
@@ -26,11 +25,11 @@ model passageiro {
 model embarque {
   id            Int        @id @default(autoincrement()) @db.UnsignedInt
   passageiro_id Int        @db.UnsignedInt
-  viagem_id     Int        @db.UnsignedInt
+  viagem_id     Int?       @db.UnsignedInt
   tarifa        Decimal    @db.Decimal(8, 2)
-  horario       DateTime   @db.DateTime(0)
+  horario       DateTime   @default(now()) @db.DateTime(0)
   passageiro    passageiro @relation(fields: [passageiro_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_has_viagem_passageiro1")
-  viagem        viagem     @relation(fields: [viagem_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_has_viagem_viagem1")
+  viagem        viagem?    @relation(fields: [viagem_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_has_viagem_viagem1")
 
   @@index([passageiro_id], map: "fk_passageiro_has_viagem_passageiro1_idx")
   @@index([viagem_id], map: "fk_passageiro_has_viagem_viagem1_idx")
