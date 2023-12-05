@@ -4,6 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+
+const dotenv = require("dotenv");
+dotenv.config();
+
 const adminRouter = require('./routes/adminRouter');
 // const publicRouter = require('./routes/publicRouter');
 // const catracaRouter = require('./routes/catracaRouter');

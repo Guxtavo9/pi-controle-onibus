@@ -52,17 +52,18 @@ router.get("/passageiro/buscar/:nome", async function (req, res, next) {
 
 router.post("/passageiro/cadastrar", async (req, res, next) => {
   try {
-    const { nome, saldo, cpf, carterinha, email, telefone, usuario_id } = req.body;
-
+    const { nome, cpf,  email, telefone, carterinha, saldo, foto, usuario_id } = req.body;
+    
     const passageiro = await prisma.passageiro.create({
       data: {
         nome,
-        saldo,
         cpf,
-        carterinha,
         email,
         telefone,
-        usuario_id,
+        carterinha,
+        saldo,
+        foto,
+        usuario_id
       },
     });
 
@@ -75,21 +76,18 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
 
 router.put("/passageiro/editar/:id", async function (req, res, next) {
   try {
-    const passageiroId = parseInt(req.params.id);
-    const { nome, saldo, cpf, carterinha, email, telefone, usuario_id} = req.body;
-
+    const { nome, cpf,  email, telefone, carterinha, saldo, foto, usuario_id } = req.body;
+    
     const passageiro = await prisma.passageiro.update({
-      where: {
-        id: parseInt(passageiroId),
-      },
       data: {
         nome,
-        saldo,
         cpf,
-        carterinha,
         email,
         telefone,
-        usuario_id,
+        carterinha,
+        saldo,
+        foto,
+        usuario_id
       },
     });
 
@@ -172,7 +170,7 @@ router.get("/motorista/buscar/:nome", async function (req, res, next) {
 
 router.post("/motorista/cadastrar", async (req, res, next) => {
   try {
-    const { nome, cnh, nascimento, usuario} = req.body;
+    const { nome, cnh, nascimento, foto, usuario} = req.body;
     const motorista = await prisma.motorista.create({
       data: {
         nome,
@@ -192,20 +190,16 @@ router.post("/motorista/cadastrar", async (req, res, next) => {
 
 router.put("/motorista/editar/:id", async function (req, res, next) {
   try {
-    const motoristaId = parseInt(req.params.id);
-    const { nome, origem, destino, horarioPartida, duracao } = req.body;
-
-    const motorista = await prisma.motorista.update({
+    const { nome, cnh, nascimento, foto, usuario} = req.body;
+    const motorista = await prisma.passageiro.update({
       where: {
-        id: parseInt(motoristaId)
+        id: parseInt(motoristaId),
       },
       data: {
         nome,
-        saldo,
-        cpf,
-        carterinha,
-        email,
-        telefone,
+        cnh,
+        nascimento,
+        foto,
         usuario
       },
     });
