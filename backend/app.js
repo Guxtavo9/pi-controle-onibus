@@ -28,3 +28,41 @@ app.use('/admin', adminRouter);
 // app.use('/catraca', catracaRouter);
 
 module.exports = app;
+
+
+// catraca;
+
+
+dotenv.config();
+
+const embarquesRouter = require("./routes/embarques");
+const clientesRouter = require("./routes/clientes");
+
+const app = express();
+
+const whitelist = ["http://localhost:3000"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 204,
+  credentials: true,
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(corsOptions));
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/api/embarques", embarquesRouter);
+app.use("/api/clientes", clientesRouter);
+
+module.exports = app;
