@@ -1,13 +1,11 @@
-document.addEventListener("DOMContentLoaded", async () => {
-
-  const form = document.querySelector("#passaeiro");
+document.addEventListener("DOMContentLoaded", async (event) => {
+  
   try {
-    const tableBody = document.querySelector("#passageiro tbody");
-    const response = await axios.get("http://localhost:3001/admin/passageiro/");
-
+    const tableBody = document.querySelector("tbody");
+    const response = await axios.get("http://localhost:3000/admin/passageiro/listar");
     response.data.forEach((passageiro) => {
       const row = tableBody.insertRow(-1);
-      row.insertCell(0).innerHTML = passageiro.id;
+      row.insertCell(0).innerHTML = passageiro.foto;
       row.insertCell(1).innerHTML = passageiro.nome;
       row.insertCell(2).innerHTML = passageiro.saldo;
       row.insertCell(3).innerHTML = passageiro.cpf;
@@ -19,24 +17,25 @@ document.addEventListener("DOMContentLoaded", async () => {
       const showLink = document.createElement("a");
       showLink.innerHTML = "Exibir";
       showLink.classList.add("btn", "btn-info", "btn-sm", "mx-1");
-      showLink.href = `http://localhost:3001/passageiros/exibir/${passageiro.id}`;
+      showLink.href = `http://localhost:3001/passageiro/exibir/${passageiro.id}`;
       row.insertCell(7).appendChild(showLink);
 
       // Link para Editar
       const editLink = document.createElement("a");
       editLink.innerHTML = "Editar";
       editLink.classList.add("btn", "btn-success", "btn-sm", "mx-1");
-      editLink.href = `http://localhost:3001/passageiros/editar/${passageiro.id}`;
+      editLink.href = `http://localhost:3001/passageiro/editar/${passageiro.id}`;
       row.insertCell(8).appendChild(editLink);
 
       // Link para Deletar
       const deleteLink = document.createElement("a");
       deleteLink.innerHTML = "Deletar";
       deleteLink.classList.add("btn", "btn-danger", "btn-sm", "mx-1");
-      deleteLink.href = `http://localhost:3001/passageiros/excluir/${passageiro.id}`;
+      deleteLink.href = `http://localhost:3001/passageiro/excluir/${passageiro.id}`;
       row.insertCell(9).appendChild(deleteLink);
     });
-  } catch {
-
-  }
+  } catch (error) {
+      console.error("Erro ao listar Passageiros", error);
+      res.status(500).json({ error: "Erro interno do servidor" });
+    }
 });

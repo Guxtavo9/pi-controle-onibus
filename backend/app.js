@@ -10,7 +10,13 @@ const adminRouter = require('./routes/adminRouter');
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
