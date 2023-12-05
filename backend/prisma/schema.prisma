@@ -14,9 +14,8 @@ model passageiro {
   saldo      Decimal?   @db.Decimal(8, 2)
   cpf        String     @db.Char(11)
   carterinha String     @db.Char(20)
-  email      String?     @db.VarChar(500)
-  telefone   String?    @db.Char(11)
-  foto       String?     @db.VarChar(250)
+  email      String     @db.VarChar(500)
+  telefone   String     @db.Char(11)
   embarque   embarque[]
   usuario    usuario    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_usuario1")
 
@@ -77,6 +76,7 @@ model viagem {
   onibus_id    Int        @db.UnsignedInt
   dataPartida  DateTime   @db.DateTime(0)
   dataChegada  DateTime   @db.DateTime(0)
+  passagem     Decimal    @db.Decimal(10, 2)
   embarque     embarque[]
   linha        linha      @relation(fields: [linha_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_linha1")
   motorista    motorista  @relation(fields: [motorista_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_motorista1")

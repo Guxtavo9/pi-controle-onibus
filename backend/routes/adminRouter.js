@@ -1,5 +1,7 @@
 var express = require("express");
 var router = express.Router();
+const upload = require("../middlewares/fileUpload");
+
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -168,16 +170,17 @@ router.get("/motorista/buscar/:nome", async function (req, res, next) {
   }
 });
 
-router.post("/motorista/cadastrar", async (req, res, next) => {
+router.post("/motorista/cadastrar", upload.single("foto"), async (req, res, next) => {
   try {
-    const { nome, cnh, nascimento, foto, usuario} = req.body;
+    const { nome, cnh, nascimento, usuario } = req.body;
+    const foto = req.file?.path;
     const motorista = await prisma.motorista.create({
       data: {
         nome,
         cnh,
-        nascimento,
+        nascimento: new Date(nascimento), // Correção aqui
         foto,
-        usuario
+        usuario,
       },
     });
 
@@ -187,6 +190,7 @@ router.post("/motorista/cadastrar", async (req, res, next) => {
     res.status(500).json({ error: "Erro ao criar o motorista." });
   }
 });
+
 
 router.put("/motorista/editar/:id", async function (req, res, next) {
   try {

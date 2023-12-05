@@ -1,12 +1,11 @@
   const form = document.querySelector('#form');
   form.addEventListener('submit', async (event) => {
     event.preventDefault()
-
     if (form.checkValidity()) {
       try {
         const formData = new FormData(form);
 
-        const response = await axios.post('http://localhost:3001/api/motoristas/cadastrar', formData, {
+        const response = await axios.post('http://localhost:3000/admin/motorista/cadastrar', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
