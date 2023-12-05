@@ -1,41 +1,60 @@
 document.addEventListener("DOMContentLoaded", async (event) => {
-  
   try {
-    const tableBody = document.querySelector("tbody");
-    const response = await axios.get("http://localhost:3000/admin/passageiro/listar");
+    const tbody = document.querySelector("#passageiros tbody");
+
+    const response = await axios.get(
+      "http://localhost:3000/api/passageiro/listar"
+    );
     response.data.forEach((passageiro) => {
-      const row = tableBody.insertRow(-1);
-      row.insertCell(0).innerHTML = passageiro.foto;
-      row.insertCell(1).innerHTML = passageiro.nome;
-      row.insertCell(2).innerHTML = passageiro.saldo;
-      row.insertCell(3).innerHTML = passageiro.cpf;
-      row.insertCell(4).innerHTML = passageiro.carterinha;
-      row.insertCell(5).innerHTML = passageiro.email;
-      row.insertCell(6).innerHTML = passageiro.telefone;
+      const tr = document.createElement("tr");
 
-      // Link para Exibir
-      const showLink = document.createElement("a");
-      showLink.innerHTML = "Exibir";
-      showLink.classList.add("btn", "btn-info", "btn-sm", "mx-1");
-      showLink.href = `http://localhost:3001/passageiro/exibir/${passageiro.id}`;
-      row.insertCell(7).appendChild(showLink);
+      const fotoTd = document.createElement("td");
+      if (passageiro.foto) {
+        fotoTd.innerHTML = `<img src="http://localhost:3001/${passageiro.foto}" alt="${passageiro.nome}" width="50">`;
+      } else {
+        fotoTd.innerHTML = "Não possui.";
+      }
+      tr.appendChild(fotoTd);
 
-      // Link para Editar
-      const editLink = document.createElement("a");
-      editLink.innerHTML = "Editar";
-      editLink.classList.add("btn", "btn-success", "btn-sm", "mx-1");
-      editLink.href = `http://localhost:3001/passageiro/editar/${passageiro.id}`;
-      row.insertCell(8).appendChild(editLink);
+      const nomeTd = document.createElement("td");
+      nomeTd.textContent = passageiro.nome;
+      tr.appendChild(nomeTd);
 
-      // Link para Deletar
-      const deleteLink = document.createElement("a");
-      deleteLink.innerHTML = "Deletar";
-      deleteLink.classList.add("btn", "btn-danger", "btn-sm", "mx-1");
-      deleteLink.href = `http://localhost:3001/passageiro/excluir/${passageiro.id}`;
-      row.insertCell(9).appendChild(deleteLink);
+      const saldoTd = document.createElement("td");
+      saldoTd.textContent = passageiro.saldo;
+      tr.appendChild(saldoTd);
+
+      const cpfTd = document.createElement("td");
+      cpfTd.textContent = passageiro.cpf;
+      tr.appendChild(cpfTd);
+
+      const carterinhaTd = document.createElement("td");
+      carterinhaTd.textContent = passageiro.carterinha;
+      tr.appendChild(carterinhaTd);
+
+      const emailTd = document.createElement("td");
+      emailTd.textContent = passageiro.email;
+      tr.appendChild(emailTd);
+      
+      const telefoneTd = document.createElement("td");
+      telefoneTd.textContent = passageiro.telefone;
+      tr.appendChild(telefoneTd);
+
+      const codigoTd = document.createElement("td");
+      codigoTd.textContent = passageiro.id;
+      tr.appendChild(codigoTd);
+
+      const acoesTd = document.createElement("td");
+      const exibirLink = `<a href="/passageiro/exibir/${passageiro.id}">Exibir</a>`;
+      const editarLink = `<a href="/passageiro/editar/${passageiro.id}">Editar</a>`;
+      const deletarLink = `<a href="/passageiro/deletar/${passageiro.id}">Deletar</a>`;
+      acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+      tr.appendChild(acoesTd);
+
+      tbody.appendChild(tr);
     });
   } catch (error) {
-      console.error("Erro ao listar Passageiros", error);
-      res.status(500).json({ error: "Erro interno do servidor" });
-    }
+    console.log(error);
+    alert(error.response.data.mensagem);
+  }
 });
