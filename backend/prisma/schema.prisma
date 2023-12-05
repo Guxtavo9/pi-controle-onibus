@@ -77,7 +77,6 @@ model viagem {
   onibus_id    Int        @db.UnsignedInt
   dataPartida  DateTime   @db.DateTime(0)
   dataChegada  DateTime   @db.DateTime(0)
-  passagem     Decimal    @db.Decimal(10, 2)
   embarque     embarque[]
   linha        linha      @relation(fields: [linha_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_linha1")
   motorista    motorista  @relation(fields: [motorista_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_motorista1")
