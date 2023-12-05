@@ -45,10 +45,10 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       tr.appendChild(codigoTd);
 
       const acoesTd = document.createElement("td");
-      const exibirLink = `<a href="/passageiro/exibir/${passageiro.id}">Exibir</a>`;
-      const editarLink = `<a href="/passageiro/editar/${passageiro.id}">Editar</a>`;
-      const deletarLink = `<a href="/passageiro/deletar/${passageiro.id}">Deletar</a>`;
-      acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+      const exibirLink = `<a href="/admin/passageiro/exibir/${passageiro.id}">Exibir</a>`;
+      const editarLink = `<a href="/admin/passageiro/editar/${passageiro.id}">Editar</a>`;
+      const excluirLink = `<a href="/admin/passageiro/excluir/${passageiro.id}">excluir</a>`;
+      acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${excluirLink}`;
       tr.appendChild(acoesTd);
 
       tbody.appendChild(tr);

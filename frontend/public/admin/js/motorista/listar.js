@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", async (event) => {
         tr.appendChild(NascimentoTd);
   
         const acoesTd = document.createElement("td");
-        const exibirLink = `<a href="/motorista/exibir/${motorista.id}">Exibir</a>`;
-        const editarLink = `<a href="/motorista/editar/${motorista.id}">Editar</a>`;
-        const deletarLink = `<a href="/motorista/deletar/${motorista.id}">Deletar</a>`;
-        acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+        const exibirLink = `<a href="/admin/motorista/exibir/${motorista.id}">Exibir</a>`;
+        const editarLink = `<a href="/admin/motorista/editar/${motorista.id}">Editar</a>`;
+        const excluirLink = `<a href="/admin/motorista/excluir/${motorista.id}">excluir</a>`;
+        acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${excluirLink}`;
         tr.appendChild(acoesTd);
   
         tbody.appendChild(tr);
