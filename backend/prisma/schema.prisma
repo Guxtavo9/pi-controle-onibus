@@ -14,9 +14,9 @@ model passageiro {
   saldo      Decimal?   @db.Decimal(8, 2)
   cpf        String     @db.Char(11)
   carterinha String     @db.Char(20)
-  email      String     @db.VarChar(500)
-  telefone   String     @db.Char(11)
-  foto       String     @db.VarChar(250)
+  email      String?     @db.VarChar(500)
+  telefone   String?    @db.Char(11)
+  foto       String?     @db.VarChar(250)
   embarque   embarque[]
   usuario    usuario    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_usuario1")
 
