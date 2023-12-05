@@ -476,6 +476,7 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
+  color: #424242;
 }
 
 .section-title h2::after {
@@ -500,7 +501,7 @@ section {
 
 .section-bg:before {
   content: "";
-  background: #f7f7f7;
+  background: #eaeaea;
   position: absolute;
   bottom: 60px;
   top: 60px;
@@ -602,10 +603,15 @@ section {
   font-weight: 700;
   font-size: 34px;
   margin-bottom: 30px;
+  color: #424242;
 }
 
 .about .content p {
   margin-bottom: 30px;
+  color: #424242;
+}
+span{
+  color: #424242;
 }
 
 .about .content .about-btn {
@@ -645,6 +651,7 @@ section {
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 10px 0;
+  color: #424242;
 }
 
 .about .icon-boxes .icon-box p {
