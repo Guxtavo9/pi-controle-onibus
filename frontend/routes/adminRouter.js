@@ -3,7 +3,7 @@ var router = express.Router();
 
 //rota INDEX
 
-router.get("/admin", function (req, res, next) {
+router.get("/", function (req, res, next) {
   res.render("admin/index");
 });
 

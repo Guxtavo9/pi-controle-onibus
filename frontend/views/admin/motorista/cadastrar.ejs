@@ -51,7 +51,7 @@
       <h1>Cadastrar Motorista</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><a href="localhost:3001/admin">Página Inicial</a></li>
+          <li class="breadcrumb-item active"><a href="/admin/">Página Inicial</a></li>
           <li class="breadcrumb-item active">Cadastrar Motorista</li>
         </ol>
       </nav>
@@ -83,7 +83,7 @@
 
               <div class="col-md-6">
                 <label for="cnh" id="cnh"  class="form-label">CNH</label>
-                <input type="text" pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$" autocomplete="off" required="" placeholder="Informe seu CPF" class="form-control" inlength="11">
+                <input type="text" pattern="/^[A-Z]{1}\d{8}(\d{1}|\d{2})$/" autocomplete="off" required="" placeholder="Informe seu CNH" class="form-control" inlength="11">
                 <div class="valid-feedback">
                   Tudo certo!
                 </div>
