@@ -11,7 +11,7 @@ body *{
 .main-login{
     width: 100vw;
     height: 100vh;
-    background-color: #201b2c;
+    background-color: #d6d6d6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@ body *{
 }
 .left-login >h1{
     font-size: 3vw;
-    color: #77ffc0;
+    color: #ff9900;
 }
 .image-login{
     width: 35vw;
@@ -47,12 +47,12 @@ body *{
     align-items: center;
     flex-direction: column;
     padding: 25px  25px ;
-    background: #2f2841;
+    background: #d0d0d1;
     border-radius: 20px;
     box-shadow: 0px 10px 40px #00000056;
 }
 .card-login >h1{
-    color: #00ff88;
+    color: #ff9900;
     font-weight: 800;
     margin: 0;
 
@@ -97,7 +97,7 @@ body *{
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 3px;
-    background: #00ff88;
+    background: #ffae00d8;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #00ff8052;
 }
@@ -131,7 +131,7 @@ body *{
     }
 }
 .circulo {
-    background: rgb(248, 9, 1);
+    background: rgb(1, 18, 248);
     border-radius: 50%;
     width: 300px;
     height: 300px;
@@ -140,10 +140,15 @@ body *{
 #clock {
     font-size: 2rem;
     margin-top: 50px;
-    color: #00ff88;
+    color: #ffd900;
   }
   #date {
     font-size: 1.5rem;
     margin-top: 10px;
     color: #00ff88;
   }
+
+  p{
+    font-size: 30px;
+    color: beige;
+}
