@@ -54,7 +54,8 @@ router.get("/passageiro/buscar/:nome", async function (req, res, next) {
 
 router.post("/passageiro/cadastrar", async (req, res, next) => {
   try {
-    const { nome, cpf,  email, telefone, carterinha, saldo, foto, usuario_id } = req.body;
+    const { nome, cpf,  email, telefone, carterinha, saldo, usuario_id } = req.body;
+    const foto = req.file?.path;
     
     const passageiro = await prisma.passageiro.create({
       data: {
@@ -78,7 +79,8 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
 
 router.put("/passageiro/editar/:id", async function (req, res, next) {
   try {
-    const { nome, cpf,  email, telefone, carterinha, saldo, foto, usuario_id } = req.body;
+    const { nome, cpf,  email, telefone, carterinha, saldo, usuario_id } = req.body;
+    const foto = req.file?.path;
     
     const passageiro = await prisma.passageiro.update({
       data: {
@@ -194,7 +196,8 @@ router.post("/motorista/cadastrar", upload.single("foto"), async (req, res, next
 
 router.put("/motorista/editar/:id", async function (req, res, next) {
   try {
-    const { nome, cnh, nascimento, foto, usuario} = req.body;
+    const { nome, cnh, nascimento, usuario} = req.body;
+    const foto = req.file?.path;
     const motorista = await prisma.passageiro.update({
       where: {
         id: parseInt(motoristaId),
@@ -230,7 +233,7 @@ router.delete("/excluir/:id", async function (req, res, next) {
       res.status(404).json({ error: "motorista não encontrada." });
     }
 
-    res.status(200).json( { msg: 'cpf cancelado!' });
+    res.status(200).json( { msg: 'motorista deletado' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao excluir o motorista." });

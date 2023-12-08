@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
       const id = window.location.pathname.split('/').pop();
-      const response = await axios.get(`http://localhost:3000/admin/motorista/exibir/${id}`);
+      const response = await axios.get(`http://localhost:3000/admin//motorista/exibir/${id}`);
       const motorista = response.data;
 
       const form = document.querySelector('#form');
