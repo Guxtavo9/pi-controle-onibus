@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       const tbody = document.querySelector("#motoristas tbody");
   
       const response = await axios.get(
-        "http://localhost:3000/api/motorista/listar"
+        "http://localhost:3000/admin/motorista/listar"
       );
       response.data.forEach((motorista) => {
         const tr = document.createElement("tr");
   
         const fotoTd = document.createElement("td");
         if (motorista.foto) {
-          fotoTd.innerHTML = `<img src="http://localhost:3001/${motorista.foto}" alt="${motorista.nome}" width="50">`;
+          fotoTd.innerHTML = `<img src="http://localhost:3000/${motorista.foto}" alt="${motorista.nome}" width="50">`;
         } else {
           fotoTd.innerHTML = "Não possui.";
         }

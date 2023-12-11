@@ -1,26 +1,31 @@
-  const form = document.querySelector('#form');
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault()
-    if (form.checkValidity()) {
-      try {
-        const formData = new FormData(form);
+$(document).ready(function() {
+  // Máscara para o CPF
+  $('#cpf').inputmask('999.999.999-99', { placeholder: ' ' });
+});
 
-        const response = await axios.post('http://localhost:3000/admin/motorista/cadastrar', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+const form = document.querySelector('#form');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (form.checkValidity()) {
+    try {
+      const formData = new FormData(form);
 
-        const { motorista } = response.data;
+      const response = await axios.post('http://localhost:3000/admin/motorista/cadastrar', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
-        alert("Motorista cadastrado com sucesso.");
+      const { motorista } = response.data;
 
-        window.location.href = `/motoristas/exibir/${motorista.id}`;
-      } catch (error) {
-        console.log(error);
-        alert(error.response.data.mensagem);
-      }
+      alert("Motorista cadastrado com sucesso.");
+
+      window.location.href = `/motoristas/exibir/${motorista.id}`;
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.mensagem);
     }
+  }
 
-    form.classList.add('was-validated')
-  }, false);
+  form.classList.add('was-validated');
+});
