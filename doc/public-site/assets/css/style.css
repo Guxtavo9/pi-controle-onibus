@@ -75,6 +75,10 @@ h6 {
   opacity: 1;
 }
 
+.meu-butom{
+  display: flex;
+  justify-content: center;
+}
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
