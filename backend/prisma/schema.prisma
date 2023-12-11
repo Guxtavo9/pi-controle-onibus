@@ -8,15 +8,16 @@ datasource db {
 }
 
 model passageiro {
-  id         Int        @id @default(autoincrement()) @db.UnsignedInt
-  usuario_id Int        @db.UnsignedInt
-  nome       String     @db.VarChar(100)
-  saldo      Decimal?   @db.Decimal(8, 2)
-  cpf        String     @db.Char(14)
-  carterinha String     @db.Char(20)
-  email      String     @db.VarChar(500)
-  embarque   embarque[]
-  usuario    usuario    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_usuario1")
+  id           Int        @id @default(autoincrement()) @db.UnsignedInt
+  usuario_id   Int        @db.UnsignedInt
+  nome         String     @db.VarChar(100)
+  saldo        Decimal?   @db.Decimal(8, 2)
+  cpf          String     @db.Char(14)
+  carterinhaid String     @db.Char(11)
+  carterinha   String     @db.Char(20)
+  email        String     @db.VarChar(500)
+  embarque     embarque[]
+  usuario      usuario    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_usuario1")
 
   @@index([usuario_id], map: "fk_passageiro_usuario1_idx")
 }
@@ -47,7 +48,7 @@ model linha {
 model motorista {
   id         Int       @id @default(autoincrement()) @db.UnsignedInt
   nome       String    @db.VarChar(100)
-  cpf        String     @db.Char(14)
+  cpf        String    @db.Char(14)
   nascimento DateTime? @db.Date
   foto       String    @db.VarChar(250)
   viagem     viagem[]
