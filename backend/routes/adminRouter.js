@@ -54,19 +54,18 @@ router.get("/passageiro/buscar/:nome", async function (req, res, next) {
 
 router.post("/passageiro/cadastrar", async (req, res, next) => {
   try {
-    const { nome, cpf,  email, telefone, carterinha, saldo, usuario_id } = req.body;
+    const { nome, cpf, email, carterinha, saldo, usuario_id } = req.body;
     const foto = req.file?.path;
-    
+
     const passageiro = await prisma.passageiro.create({
       data: {
         nome,
         cpf,
         email,
-        telefone,
         carterinha,
         saldo,
         foto,
-        usuario_id
+        usuario_id,
       },
     });
 
@@ -79,19 +78,18 @@ router.post("/passageiro/cadastrar", async (req, res, next) => {
 
 router.put("/passageiro/editar/:id", async function (req, res, next) {
   try {
-    const { nome, cpf,  email, telefone, carterinha, saldo, usuario_id } = req.body;
+    const { nome, cpf, email, carterinha, saldo, usuario_id } = req.body;
     const foto = req.file?.path;
-    
+
     const passageiro = await prisma.passageiro.update({
       data: {
         nome,
         cpf,
         email,
-        telefone,
         carterinha,
         saldo,
         foto,
-        usuario_id
+        usuario_id,
       },
     });
 
@@ -146,23 +144,21 @@ router.get("/motorista/buscar/:id", async function (req, res, next) {
     }
 
     res.status(200).json(motorista);
-    
   } catch (error) {
     console.error("Erro ao buscar motorista por ID:", error);
     res.status(500).json({ error: "Erro interno do servidor" });
   }
 });
 
-
 router.get("/motorista/buscar/:nome", async function (req, res, next) {
-  const motoristaNome = (req.params.nome);
+  const motoristaNome = req.params.nome;
 
   try {
     const motoristas = await prisma.motorista.findUnique({
       where: {
         nome: {
-          contains: motoristaNome
-        }
+          contains: motoristaNome,
+        },
       },
     });
     res.status(200).json(motoristas);
@@ -172,42 +168,47 @@ router.get("/motorista/buscar/:nome", async function (req, res, next) {
   }
 });
 
-router.post("/motorista/cadastrar", upload.single("foto"), async (req, res, next) => {
-  try {
-    const { nome, cnh, nascimento, usuario } = req.body;
-    const foto = req.file?.path;
-    const motorista = await prisma.motorista.create({
-      data: {
-        nome,
-        cnh,
-        nascimento: new Date(nascimento), // Correção aqui
-        foto,
-        usuario,
-      },
-    });
+router.post(
+  "/motorista/cadastrar",
+  upload.single("foto"),
+  async (req, res, next) => {
+    try {
+      const { nome, cpf, nascimento, usuario } = req.body;
+      const foto = req.file?.path;
+      const motorista = await prisma.motorista.create({
+        data: {
+          nome,
+          cpf,
+          nascimento: new Date(nascimento), // Correção aqui
+          foto,
+          usuario,
+        },
+      });
 
-    res.status(200).json(motorista);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Erro ao criar o motorista." });
+      res.status(200).json(motorista);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Erro ao criar o motorista." });
+    }
   }
-});
-
+);
 
 router.put("/motorista/editar/:id", async function (req, res, next) {
   try {
-    const { nome, cnh, nascimento, usuario} = req.body;
+    const { nome, cpf, nascimento, usuario } = req.body;
     const foto = req.file?.path;
-    const motorista = await prisma.passageiro.update({
+    const motoristaId = parseInt(req.params.id);
+
+    const motorista = await prisma.motorista.update({
       where: {
-        id: parseInt(motoristaId),
+        id: motoristaId,
       },
       data: {
         nome,
-        cnh,
+        cpf,
         nascimento,
         foto,
-        usuario
+        usuario,
       },
     });
 
@@ -233,7 +234,7 @@ router.delete("/excluir/:id", async function (req, res, next) {
       res.status(404).json({ error: "motorista não encontrada." });
     }
 
-    res.status(200).json( { msg: 'motorista deletado' });
+    res.status(200).json({ msg: "motorista deletado" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao excluir o motorista." });
