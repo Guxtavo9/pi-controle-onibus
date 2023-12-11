@@ -129,7 +129,7 @@ router.get("motorista/listar", async function (req, res, next) {
   res.json(motorista);
 });
 
-router.get("/motorista/buscar/:id", async function (req, res, next) {
+router.get("/motorista/exibir/:id", async function (req, res, next) {
   const motoristaId = parseInt(req.params.id);
 
   try {
@@ -168,9 +168,7 @@ router.get("/motorista/buscar/:nome", async function (req, res, next) {
   }
 });
 
-router.post(
-  "/motorista/cadastrar",
-  upload.single("foto"),
+router.post(  "/motorista/cadastrar", upload.single("foto"),
   async (req, res, next) => {
     try {
       const { nome, cpf, nascimento, usuario } = req.body;
@@ -219,7 +217,7 @@ router.put("/motorista/editar/:id", async function (req, res, next) {
   }
 });
 
-router.delete("/excluir/:id", async function (req, res, next) {
+router.delete("/motorista/excluir/:id", async function (req, res, next) {
   try {
     const motoristaId = parseInt(req.params.id);
     const motorista = await prisma.motorista.delete({

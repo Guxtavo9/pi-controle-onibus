@@ -31,11 +31,12 @@ form.addEventListener('submit', async (event) => {
         }
       });
 
-      const { motorista } = response.data;
+      const  motorista  = response.data;
+      console.log(motorista);
 
       alert("Motorista cadastrado com sucesso.");
 
-      window.location.href = `localhost:3001/admin/motoristas/exibir/${motorista.id}`;
+      window.location.href = `http://localhost:3001/admin/motorista/exibir/${motorista.id}`;
     } catch (error) {
       console.log(error);
       alert(error.response.data.mensagem);

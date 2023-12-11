@@ -38,6 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRouter);
+app.use('/uploads', express.static('uploads'));
 // app.use('/public-site', publicRouter);
 // app.use('/catraca', catracaRouter);
 
