@@ -89,11 +89,17 @@
                 <div class="invalid-feedback">Informe uma data válida.</div>
               </div>
 
-              <!-- Foto -->
+              <!-- Foto Atual -->
               <div class="col-md-6">
-                <label for="foto" class="form-label">Foto</label>
+                <label for="foto" class="form-label">Foto Atual</label>
+                <img src="<%= motorista.foto %>" id="fotoAtual" class="img-fluid rounded">
+              </div>
+
+              <!-- Nova Foto -->
+              <div class="col-md-6">
+                <label for="novaFoto" class="form-label">Nova Foto</label>
                 <div class="col-sm-12">
-                  <input name="foto" class="form-control" type="file" id="foto" required>
+                  <input name="novaFoto" class="form-control" type="file" id="novaFoto" accept="image/*">
                   <div class="valid-feedback">Tudo certo!</div>
                   <div class="invalid-feedback">Selecione uma imagem.</div>
                 </div>

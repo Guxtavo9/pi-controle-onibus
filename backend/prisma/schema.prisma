@@ -12,7 +12,7 @@ model passageiro {
   usuario_id Int        @db.UnsignedInt
   nome       String     @db.VarChar(100)
   saldo      Decimal?   @db.Decimal(8, 2)
-  cpf        String     @db.Char(11)
+  cpf        String     @db.Char(14)
   carterinha String     @db.Char(20)
   email      String     @db.VarChar(500)
   telefone   String     @db.Char(11)
@@ -48,7 +48,7 @@ model linha {
 model motorista {
   id         Int       @id @default(autoincrement()) @db.UnsignedInt
   nome       String    @db.VarChar(100)
-  cnh        String    @db.Char(11)
+  cpf        String     @db.Char(14)
   nascimento DateTime? @db.Date
   foto       String    @db.VarChar(250)
   viagem     viagem[]

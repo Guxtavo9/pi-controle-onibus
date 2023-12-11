@@ -9,7 +9,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const cpfInput = document.querySelector('#cpf');
     const nascimentoInput = document.querySelector('#nascimento');
     const fotoInput = document.querySelector('#foto');
-    
+    const novaFotoInput = document.querySelector('#novaFoto'); 
+
+    const fotoAtual = document.querySelector('#fotoAtual'); 
+    fotoAtual.src = motorista.foto; 
+
     nomeInput.value = motorista.nome;
     cpfInput.value = motorista.cpf;
     nascimentoInput.value = motorista.nascimento.split('T')[0];
