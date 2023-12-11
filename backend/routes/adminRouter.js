@@ -179,7 +179,7 @@ router.post(
         data: {
           nome,
           cpf,
-          nascimento: new Date(nascimento), // Correção aqui
+          nascimento, // Correção aqui
           foto,
           usuario,
         },
