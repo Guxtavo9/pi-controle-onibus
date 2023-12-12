@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 // Rota para cadastrar embarque
 router.post('/cadastrar', async (req, res, next) => {
-  const clienteId = Number(req.body.clienteId);
+  const carterinhaId = Number(req.body.carterinhaId);
   const valorDaPassagem = 5;  // Valor padrão da passagem
 
   try {
@@ -13,7 +13,7 @@ router.post('/cadastrar', async (req, res, next) => {
     const novoEmbarque = await prisma.$transaction(async (prisma) => {
       // Consulte a tabela cliente para obter informações sobre a isenção e o saldo
       const cliente = await prisma.cliente.findUnique({
-        where: { id: clienteId },
+        where: { id: carterinhaId },
       });
 
       // Verifique se o cliente existe
@@ -29,7 +29,7 @@ router.post('/cadastrar', async (req, res, next) => {
       // Execute a inserção no banco de dados usando Prisma
       const embarque = await prisma.embarque.create({
         data: {
-          cliente_id: clienteId,
+          cliente_id: carterinhaId,
           horario: new Date(),
         },
       });
@@ -37,7 +37,7 @@ router.post('/cadastrar', async (req, res, next) => {
       // Atualize o saldo do cliente se necessário usando decrement
       if (cliente.isencao !== 1) {
         await prisma.cliente.update({
-          where: { id: clienteId },
+          where: { id: carterinhaId },
           data: {
             saldo: {
               decrement: valorDaPassagem,

@@ -1,11 +1,11 @@
 const lerCartao = async () => {
     try {
       // Obtenha o valor do input
-      const clienteId = inputClienteId.value;
+      const carterinhaId = inputcarterinhaId.value;
   
       // Faça a solicitação POST usando Axios
       const url = "http://localhost:3001/catraca/embarques/cadastrar";
-      const data = { clienteId };
+      const data = { carterinhaId };
       const response = await axios.post(url, data);
   
       console.log(response.data);
@@ -28,6 +28,6 @@ const lerCartao = async () => {
     }
   };
   
-  const inputClienteId = document.querySelector("#clienteId");
-  inputClienteId.focus();
+  const inputcarterinhaId = document.querySelector("#carterinhaId");
+  inputcarterinhaId.focus();
   

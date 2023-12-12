@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/catraca/style.css">
     <title>catraca de onibus</title>
 </head>
-<body>
+<body class="ready">
     <div class="main-login">
         <div class="left-login">
             
@@ -20,8 +20,8 @@
                     <div id="date"></div>
                     <br><br>
                <div class="circulo"></div>
-               <input type="text" name="clienteId" id="clienteId" placeholder="Informar o código do cartão." onchange="lerCartao()" style="position: fixed; margin-top: -1046px;"> 
-               <input type="button" value="confirmar">
+               <input type="text" name="carterinhaId" id="carterinhaId" placeholder="Informar o código do cartão." onchange="lerCartao()" style="position: fixed; "> 
+               
                <br>
                 <br>
                <h1> passagem 5 reais <br> saldo: <br> N:</h1>
@@ -31,7 +31,11 @@
             </div>
         </div>
 
+
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="/js/aguardando.js"></script>
+    
 </body>
 </html>
