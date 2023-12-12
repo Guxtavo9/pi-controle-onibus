@@ -200,7 +200,7 @@ router.get("/motorista/buscar/:nome", async function (req, res, next) {
   }
 });
 
-router.post(  "/motorista/cadastrar", upload.single("foto"),
+router.post("/motorista/cadastrar", upload.single("foto"),
   async (req, res, next) => {
     try {
       const { nome, cpf, nascimento, usuario } = req.body;
@@ -223,23 +223,18 @@ router.post(  "/motorista/cadastrar", upload.single("foto"),
   }
 );
 
-router.put("/motorista/editar/:id", async function (req, res, next) {
+router.put("/motorista/editar/:id",upload.single("foto"), async function (req, res, next) {
   try {
+    const motoristaId = parseInt(req.params.id);
     const { nome, cpf, nascimento, usuario } = req.body;
     const foto = req.file?.path;
-    const motoristaId = parseInt(req.params.id);
+    const data = { nome, cpf, nascimento, usuario, foto }
 
     const motorista = await prisma.motorista.update({
       where: {
         id: motoristaId,
-      },
-      data: {
-        nome,
-        cpf,
-        nascimento,
-        foto,
-        usuario,
-      },
+        data
+      }
     });
 
     res.status(200).json(motorista);
