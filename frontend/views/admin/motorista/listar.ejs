@@ -2,33 +2,33 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>Nimbus | Motorista</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
-  <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet" />
 
   <!-- Template Main CSS File -->
-  <link href="/admin/assets/css/style.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="/admin/assets/css/style.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -39,11 +39,16 @@
   ======================================================== -->
 </head>
 
-  <%- include('../partials/_header.ejs'); -%>
-  <%- include('../partials/_aside.ejs'); -%>
+<%- include('../partials/_header.ejs'); -%> <%-
+  include('../partials/_aside.ejs'); -%>
 
-  <section class="container">
+<section class="container">
+  <main id="main" class="main">
     <!-- Table with stripped rows -->
+
+    <!-- <div class="container">
+    <table id="table"></table>
+  </div> -->
     <div class="container">
       <table id="motoristas" class="table table-bordered table-hover">
         <thead>
@@ -58,13 +63,78 @@
       </table>
     </div>
     <!-- End Table with stripped rows -->
-  </section>
+  </main>
+</section>
 
-  <%- include('../partials/_footer.ejs'); -%>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<%- include('../partials/_footer.ejs'); -%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js" integrity="sha256-WCzAhd2P6gRJF9Hv3oOOd+hFJi/QJbv+Azn4CGB8gfY=" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 
-  <script src="/admin/js/motorista/listar.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="/admin/js/motorista/listar.js"></script>
+
+<!-- <script>
+  $('#table').DataTable({
+    "language": {
+      url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json',
+    },
+    "ajax": {
+      "url": "http://localhost:3000/admin/motorista/listar",
+      "dataSrc": "" // O atributo que contém os dados no JSON retornado
+    },
+    "columns": [
+      { "data": "foto" },
+      { "data": "id" },
+      { "data": "nome" },
+      { "data": "cpf" },
+      { "data": "nascimento" },
+      { "data": null, "defaultContent": "" },
+    ],
+
+    "columnDefs": [{
+      "targets": 1, // Coluna que contém a URL da imagem
+      "render": function(data, type, row) {
+        return `<img src = "http://localhost:3000/${data}"
+        class = "foto-table"
+        alt = "Foto"
+        width = "50"
+        height = "50" >`;
+      }
+    }],
+  
+    "createdRow": function(row, data, dataIndex) {
+      // Adiciona os botões à terceira coluna
+      const linkContainer = document.createElement("div");
+      linkContainer.classList.add("btn-group");
+      linkContainer.setAttribute("role", "group");
+
+      const showLink = document.createElement("a");
+      showLink.innerHTML = "Exibir";
+      showLink.classList.add("btn", "btn-inverse-info", "btn-sm");
+      showLink.href = `http://localhost:3001/admin/motorista/exibir/${data.id}`;
+
+        const editLink = document.createElement("a");
+      editLink.innerHTML = "Editar";
+      editLink.classList.add("btn", "btn-inverse-success", "btn-sm");
+      editLink.href = `http://localhost:3001/admin/motorista/editar/${data.id}`;
+
+        const deleteLink = document.createElement("a");
+      deleteLink.innerHTML = "Deletar";
+      deleteLink.classList.add("btn", "btn-inverse-danger", "btn-sm");
+      deleteLink.href = `http://localhost:3001/admin/motorista/excluir/${data.id}`
+
+        linkContainer.appendChild(showLink);
+      linkContainer.appendChild(editLink);
+      linkContainer.appendChild(deleteLink);
+
+      $(row).find("td:eq(6)").html(linkContainer);
+    }
+  });
+</script> -->
 
 </html>

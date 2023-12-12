@@ -51,7 +51,6 @@ model motorista {
   cpf          String   @db.Char(14)
   nascimento   String?  @db.VarChar(10)
   foto         String   @db.VarChar(250)
-  carterinhaId String   @db.VarChar(200)
   viagem       viagem[]
 }
 

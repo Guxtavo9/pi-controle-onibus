@@ -124,10 +124,16 @@ router.delete("/excluir/:id", async function (req, res, next) {
 
 // Motorista
 
-router.get("motorista/listar", async function (req, res, next) {
-  const motorista = await prisma.motorista.findMany();
-  res.json(motorista);
+router.get("/motorista", async (req, res) => {
+  try {
+    const motorista = await prisma.motorista.findMany();
+    res.json(motorista);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensagem: "Não foi possível obter a lista de motoristas." });
+  }
 });
+
 
 router.get("/motorista/exibir/:id", async function (req, res, next) {
   const motoristaId = parseInt(req.params.id);
@@ -197,7 +203,7 @@ router.get("/motorista/buscar/:nome", async function (req, res, next) {
 router.post(  "/motorista/cadastrar", upload.single("foto"),
   async (req, res, next) => {
     try {
-      const { nome, cpf, nascimento, usuario, carterinhaId} = req.body;
+      const { nome, cpf, nascimento, usuario } = req.body;
       const foto = req.file?.path;
       const motorista = await prisma.motorista.create({
         data: {
@@ -206,7 +212,6 @@ router.post(  "/motorista/cadastrar", upload.single("foto"),
           nascimento, // Correção aqui
           foto,
           usuario,
-          carterinhaId,
         },
       });
 

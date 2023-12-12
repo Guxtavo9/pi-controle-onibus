@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Nimbus | Editar Motorista</title>
+  <title>Nimbus | Motorista</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -41,8 +41,9 @@
 
 <body>
 
-  <% include('../partials/_header.ejs'); %>
-  <% include('../partials/_aside.ejs'); %>
+  <%- include('../partials/_header.ejs'); -%>
+  <%- include('../partials/_aside.ejs'); -%>
+
 
   <main id="main" class="main">
 
@@ -68,7 +69,7 @@
               <!-- Nome -->
               <div class="col-md-6">
                 <label for="nome" id="nome" class="form-label">Nome Completo</label>
-                <input name="nome" type="text" pattern="^[\p{L}]+(?: [\p{L}]+)*$" autocomplete="off" class="form-control" id="nomeCompleto" placeholder="Informe seu nome completo" value="<%= motorista.nome %>" required>
+                <input name="nome" type="text" pattern="^[\p{L}]+(?: [\p{L}]+)*$" autocomplete="off" class="form-control" id="nomeCompleto" placeholder="Informe seu nome completo" value="" required>
                 <div class="valid-feedback">Tudo certo!</div>
                 <div class="invalid-feedback">Nome é um campo obrigatório, utilize apenas caracteres alfabéticos.</div>
               </div>
@@ -76,7 +77,7 @@
               <!-- CPF -->
               <div class="col-md-6">
                 <label for="cpf" id="cpf" class="form-label">CPF</label>
-                <input name="cpf" type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" autocomplete="off" required placeholder="Informe seu CPF" class="form-control" maxlength="14" value="<%= motorista.cpf %>">
+                <input name="cpf" type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" autocomplete="off" required placeholder="Informe seu CPF" class="form-control" maxlength="14" value="">
                 <div class="valid-feedback">Tudo certo!</div>
                 <div class="invalid-feedback">Informe no formato 111.111.111-11</div>
               </div>
@@ -84,7 +85,7 @@
               <!-- Nascimento -->
               <div class="col-md-6">
                 <label for="nascimento" id="nascimento" class="form-label">Data de Nascimento</label>
-                <input name="nascimento" type="date" autocomplete="off" class="form-control" id="validationCustom01" value="<%= motorista.nascimento %>" required>
+                <input name="nascimento" type="date" autocomplete="off" class="form-control" id="validationCustom01" value="" required>
                 <div class="valid-feedback">Tudo certo!</div>
                 <div class="invalid-feedback">Informe uma data válida.</div>
               </div>
@@ -92,7 +93,7 @@
               <!-- Foto Atual -->
               <div class="col-md-6">
                 <label for="foto" class="form-label">Foto Atual</label>
-                <img src="<%= motorista.foto %>" id="fotoAtual" class="img-fluid rounded">
+                <img src="" id="fotoAtual" class="img-fluid rounded">
               </div>
 
               <!-- Nova Foto -->
@@ -123,14 +124,14 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
 
   <!-- Template Main JS File -->
   <script src="admin/assets/js/editar.js"></script>
