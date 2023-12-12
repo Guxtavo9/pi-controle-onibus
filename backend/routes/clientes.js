@@ -5,13 +5,13 @@ const prisma = new PrismaClient();
 
 // Rota para recarregar saldo do cliente
 router.post("/recarregar-saldo", async (req, res) => {
-  const clienteId = Number(req.body.clienteId);
+  const carterinhaId = Number(req.body.carterinhaId);
   const valorRecarga = Number(req.body.valorRecarga);
 
   try {
     // Use o método "increment" do Prisma para recarregar o saldo diretamente no banco de dados
     const clienteAtualizado = await prisma.cliente.update({
-      where: { id: clienteId },
+      where: { id: carterinhaId },
       data: {
         saldo: {
           increment: valorRecarga,

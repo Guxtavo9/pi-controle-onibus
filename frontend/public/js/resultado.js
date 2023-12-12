@@ -20,7 +20,7 @@ const obterParametroDaUrl = (nome) => {
   
     // Agendar redirecionamento após 5 segundos
     setTimeout(() => {
-      window.location.href = "http://localhost:3000/catraca/aguardando";
+      window.location.href = "http://localhost:3001/catraca/aguardando";
     }, 3000);
   };
   
