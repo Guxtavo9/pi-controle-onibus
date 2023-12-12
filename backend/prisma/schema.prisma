@@ -46,12 +46,13 @@ model linha {
 }
 
 model motorista {
-  id         Int       @id @default(autoincrement()) @db.UnsignedInt
-  nome       String    @db.VarChar(100)
-  cpf        String    @db.Char(14)
-  nascimento String?  @db.VarChar(10)
-  foto       String    @db.VarChar(250)
-  viagem     viagem[]
+  id           Int      @id @default(autoincrement()) @db.UnsignedInt
+  nome         String   @db.VarChar(100)
+  cpf          String   @db.Char(14)
+  nascimento   String?  @db.VarChar(10)
+  foto         String   @db.VarChar(250)
+  carterinhaId String   @db.VarChar(200)
+  viagem       viagem[]
 }
 
 model onibus {
