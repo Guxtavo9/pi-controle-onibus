@@ -17,12 +17,12 @@ router.post('/cadastrar', async (req, res, next) => {
       });
 
       // Verifique se o cliente existe
-      if (!cliente) {
+      if (!passageiro) {
         throw new Error('Cliente não encontrado');
       }
 
       // Verifique se o cliente tem saldo suficiente
-      if (cliente.isencao !== 1 && cliente.saldo < valorDaPassagem) {
+      if (passageiro.isencao !== 1 && cliente.saldo < valorDaPassagem) {
         throw new Error('Saldo insuficiente');
       }
 
@@ -35,7 +35,7 @@ router.post('/cadastrar', async (req, res, next) => {
       });
 
       // Atualize o saldo do cliente se necessário usando decrement
-      if (cliente.isencao !== 1) {
+      if (passageiro.isencao !== 1) {
         await prisma.cliente.update({
           where: { id: carterinhaId },
           data: {
