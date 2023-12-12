@@ -156,31 +156,31 @@ router.get("/motorista/exibir/:id", async function (req, res, next) {
   }
 });
 
-router.put("/motorista/exibir/:id", async function (req, res, next) {
-  try {
-    const { nome, cpf, nascimento, usuario } = req.body;
-    const foto = req.file?.path;
-    const motoristaId = parseInt(req.params.id);
+// router.put("/motorista/exibir/:id", async function (req, res, next) {
+//   try {
+//     const { nome, cpf, nascimento, usuario } = req.body;
+//     const foto = req.file?.path;
+//     const motoristaId = parseInt(req.params.id);
 
-    const motorista = await prisma.motorista.update({
-      where: {
-        id: motoristaId,
-      },
-      data: {
-        nome,
-        cpf,
-        nascimento,
-        foto,
-        usuario,
-      },
-    });
+//     const motorista = await prisma.motorista.update({
+//       where: {
+//         id: motoristaId,
+//       },
+//       data: {
+//         nome,
+//         cpf,
+//         nascimento,
+//         foto,
+//         usuario,
+//       },
+//     });
 
-    res.status(200).json(motorista);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Erro ao atualizar o motorista." });
-  }
-});
+//     res.status(200).json(motorista);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Erro ao atualizar o motorista." });
+//   }
+// });
 
 router.get("/motorista/buscar/:nome", async function (req, res, next) {
   const motoristaNome = req.params.nome;
@@ -223,24 +223,22 @@ router.post("/motorista/cadastrar", upload.single("foto"),
   }
 );
 
-router.put("/motorista/editar/:id",upload.single("foto"), async function (req, res, next) {
+router.put("/motorista/editar/:id", upload.single("foto"), async (req, res) => {
   try {
-    const motoristaId = parseInt(req.params.id);
-    const { nome, cpf, nascimento, usuario } = req.body;
+    const { id } = req.params;
+    const { nome, cpf, nascimento, usuario } = req.body || null;
     const foto = req.file?.path;
     const data = { nome, cpf, nascimento, usuario, foto }
 
     const motorista = await prisma.motorista.update({
-      where: {
-        id: motoristaId,
-        data
-      }
+      where: { id: parseInt(id) },
+      data
     });
 
-    res.status(200).json(motorista);
+    res.json({ motorista });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao atualizar o motorista." });
+    res.status(500).json({ mensagem: "Erro ao editar o motorista." });
   }
 });
 
@@ -267,6 +265,116 @@ router.delete("/motorista/excluir/:id", async function (req, res, next) {
 });
 
 // Linha
+
+router.get("/linha/listar", async function (req, res, next) {
+  const linhas = await prisma.linha.findMany();
+  res.json(linhas);
+});
+
+router.get("/linha/buscar/:id", async function (req, res, next) {
+  const linhaId = parseInt(req.params.id); 
+
+  try {
+    const linha = await prisma.linha.findUnique({
+      where: {
+        id: linhaId,
+      },
+    });
+
+    if (linha) {
+      res.json(linha);
+    } else {
+      res.status(404).json({ error: 'Linha não encontrada' });
+    }
+  } catch (error) {
+    console.error('Erro ao buscar linha por ID:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
+  }
+});
+
+router.post("/linha/cadastrar", async (req, res, next) => {
+  try {
+    const { nome, origem, destino, horarioPartida, duracao } = req.body;
+
+    const novaLinha = await prisma.linha.create({
+      data: {
+        nome,
+        origem,
+        destino,
+        horarioPartida: `1970-01-01T${horarioPartida}:00Z`,
+        duracao: parseInt(duracao)
+      },
+    });
+
+    res.json(novaLinha);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Erro ao criar a linha." });
+  }
+});
+
+router.put('/linha/editar/:id', async function (req, res, next) {
+  try {
+    const id = parseInt(req.params.id);
+    const { nome, origem, destino, horarioPartida, duracao } = req.body;
+    
+    const linhaAtualizada = await prisma.linha.update({
+      where: {
+        id: id,
+      },
+      data: {
+        nome: nome,
+        origem: origem,
+        destino: destino,
+        horarioPartida: `1970-01-01T${horarioPartida}:00Z`,
+        duracao: parseInt(duracao),
+      },
+    });
+
+    res.json(linhaAtualizada);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao atualizar a linha.' });
+  }
+});
+
+router.delete("/linha/excluir/:id", async function (req, res, next) {
+  try {
+    const id = parseInt(req.params.id);
+    const linhaExcluida = await prisma.linha.delete({
+      where: {
+        id: id,
+      },
+    });
+
+    if (linhaExcluida) {
+      res.json({ message: "Linha excluída com sucesso." });
+    } else {
+      res.status(404).json({ error: "Linha não encontrada." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Erro ao excluir a linha." });
+  }
+});
+
+router.get("/linha/qtd-horarios-por-linha", async function (req, res, next) {
+  try {
+    const linhas = await prisma.linha.groupBy({
+      by: ["nome"],
+      _count: true,
+      orderBy: {
+        _count: {
+          nome: "desc",
+        },
+      },
+    });
+
+    res.json(linhas);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao realizar consulta." });
+  }
+});
 
 // Onibus
 

@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const nomeInput = document.querySelector("#nome");
     const cpfInput = document.querySelector("#cpf");
     const nascimentoInput = document.querySelector("#nascimento");
-    const fotoInput = document.querySelector("#foto");
-    const novaFotoInput = document.querySelector("#novaFoto");
 
     const fotoAtual = document.querySelector("#fotoAtual");
     fotoAtual.src = motorista.foto;
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     nomeInput.value = motorista.nome;
     cpfInput.value = motorista.cpf;
     nascimentoInput.value = motorista.nascimento.split("T")[0];
-    fotoInput.value = motorista.foto;
+    
 
     form.addEventListener(
       "submit",
@@ -49,10 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (form.checkValidity()) {
           try {
             const formData = new FormData(form);
-            await axios.put(
-              `http://localhost:3000/admin/motorista/editar/${id}`,
-              formData,
-              {
+            await axios.put(`http://localhost:3000/admin/motorista/editar/${id}`, formData,{
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
